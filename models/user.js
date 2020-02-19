@@ -7,8 +7,10 @@ const UserSchema = new Schema({
 	email: { type: String, required: true },
 	password: { type: String, required: true },
 	type: { type: String, required: true },
-	status: { type: String, required: true, default: true },
+	status: { type: Boolean, required: true, default: true },
 	reqList: { type: ["#Solicitud#"], required: true }
 });
 
-module.exports = mongoose.model("User", UserSchema);
+//Creando una constante que almacene el Usuario actual, para que asi pueda ser exportado y usado por otras clases
+const User = mongoose.model("User", UserSchema);
+module.exports = User;
