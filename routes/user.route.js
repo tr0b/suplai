@@ -12,23 +12,32 @@ router.get("/login", (req, res) => res.send("Login"));
 
 //Register Page
 
-router.get("/register", (req, res) => res.send("Register"));
+router.get("/seeuser",  async (req, res) => {
+	try{
+		const allUsers =  await User.find()
+		return res.status(200).json(allUsers)
+	}catch{
+		res.status(500).json({ message: err.message })
+	}
+
+});
 
 //Welcome Page
-router.get("/", (req, res) => res.render("Welcome!"));
+router.get("/", (req, res) => res.send("Welcome!"));
 
 //Dashboard
 router.get("/dashboard", ensureAuthenticated, (req, res) =>
-	res.render("dashboard")
+	res.send("dashboard")
 );
 
 //Registe
 router.post("/register", (req, res) => {
 	const {
 		name,
-		last_nae,
+		last_name,
 		email,
 		password,
+		password2,
 		type,
 		status,
 		reqList
@@ -50,7 +59,7 @@ router.post("/register", (req, res) => {
 		});
 	}
 	if (errors.length !== 0) {
-		res.render("register", {
+		res.send("register", {
 			errors,
 			name,
 			last_name,
@@ -60,13 +69,14 @@ router.post("/register", (req, res) => {
 		});
 	} else {
 		//Validation Passed
+		console.log("Llegue a 72");
 		User.findOne({ email: email }).then(user => {
 			if (user) {
 				//User Exists
 				errors.push({
 					msg: "The email is already registered"
 				});
-				res.render("register", {
+				res.send("register", {
 					errors,
 					name,
 					last_name,
@@ -117,8 +127,6 @@ router.post("/register", (req, res) => {
 			}
 		});
 	}
-
-	res.send("hello");
 });
 
 //Login Handle

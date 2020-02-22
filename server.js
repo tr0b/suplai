@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const flash = require("connect-flash");
+const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const app = express();
@@ -10,16 +11,17 @@ require("./passport")(passport);
 
 // Server Settings
 app.set("port", process.env.PORT || 3000);
+app.set('view engine', 'html');
+
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
 
 // Static Files
-//app.use(express.static(path.join(__dirname, "..", "public")));
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 // BodyParser
-
 app.use(express.urlencoded({ extended: false }));
 
 //Express Session Middleware
@@ -51,19 +53,19 @@ app.use((req, res, next) => {
 app.use(process.env.API_BASE_PATH, require("./routes/user.route"));
 
 // Default Router
-//app.use("*", (req, res, next) => {
-//	if (!req.originalUrl.includes(process.env.API_BASE_PATH))
-//		res.sendFile(
-//			path.join(__dirname, "..", "public", "index.html")
-//		);
-//	else next();
-//});
+app.use("*", (req, res, next) => {
+	if (!req.originalUrl.includes(process.env.API_BASE_PATH))
+		res.sendFile(
+			path.join(__dirname, "..", "public", "index.html")
+		);
+	else next();
+});
 
 //Lo de Arriba comentado por mientras, arreglarlo lo mas pronto posible
 //
 //Routes
 
 //Users Route
-app.use("/users", require("./routes/user.route"));
+//app.use("/users", require("./routes/user.route"));
 
 module.exports = app;

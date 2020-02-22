@@ -8,7 +8,7 @@ const UserSchema = new Schema({
 	password: { type: String, required: true },
 	type: { type: String, required: true },
 	status: { type: Boolean, required: true, default: true },
-	reqList: { type: ["#Solicitud#"], required: true }
+	reqList: { type: ["#Solicitud#"]}
 });
 
 //Creando una constante que almacene el Usuario actual, para que asi pueda ser exportado y usado por otras clases
