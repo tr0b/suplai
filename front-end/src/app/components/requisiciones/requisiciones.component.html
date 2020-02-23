@@ -1,0 +1,67 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Requisiciones</h1>
+      </div>
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Requisiciones</h3>
+
+            <div class="card-tools">
+              <div>
+                <button
+                  type="button"
+                  class="btn btn-block btn-success"
+                  [routerLink]="['/agregarRequisicion']"
+                >
+                  <i class="fas fa-plus"></i>
+                  Agregar
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0" style="height: 300px;">
+            <table class="table table-head-fixed text-nowrap">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Titulo</th>
+                  <th>Descripcion</th>
+                  <th>Costo</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let requisicion of this.requisicionces">
+                  <td>{{ requisicion.ID }}</td>
+                  <td>{{ requisicion.titulo }}</td>
+                  <td>{{ requisicion.descripcion }}</td>
+                  <td>{{ requisicion.costo }}</td>
+                  <td>
+                    {{ requisicion.estadoSolicitud }}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+  </div>
+</section>
