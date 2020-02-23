@@ -33,6 +33,7 @@ app.use(
 		cookie: { secure: true }
 	})
 );
+
 //Passport Middleware
 
 app.use(passport.initialize());
@@ -52,7 +53,7 @@ app.use((req, res, next) => {
 // Routes
 app.use(process.env.API_BASE_PATH, require("./routes/user.route"));
 
-// Default Router
+// Default Route
 app.use("*", (req, res, next) => {
 	if (!req.originalUrl.includes(process.env.API_BASE_PATH))
 		res.sendFile(
@@ -61,11 +62,5 @@ app.use("*", (req, res, next) => {
 	else next();
 });
 
-//Lo de Arriba comentado por mientras, arreglarlo lo mas pronto posible
-
-//Routes
-
-//Users Route
-app.use("/users", require("./routes/user.route"));
 
 module.exports = app;
