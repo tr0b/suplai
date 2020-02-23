@@ -62,10 +62,10 @@ app.use("*", (req, res, next) => {
 });
 
 //Lo de Arriba comentado por mientras, arreglarlo lo mas pronto posible
-//
+
 //Routes
 
 //Users Route
-//app.use("/users", require("./routes/user.route"));
+app.use("/users", require("./routes/user.route"));
 
 module.exports = app;

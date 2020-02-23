@@ -69,7 +69,6 @@ router.post("/register", (req, res) => {
 		});
 	} else {
 		//Validation Passed
-		console.log("Llegue a 72");
 		User.findOne({ email: email }).then(user => {
 			if (user) {
 				//User Exists
