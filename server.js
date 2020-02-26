@@ -5,14 +5,12 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const app = express();
-
 //Passport config
 require("./passport")(passport);
 
 // Server Settings
 app.set("port", process.env.PORT || 3000);
-app.set('view engine', 'html');
-
+app.set("view engine", "html");
 
 // Middlewares
 app.use(cors());
@@ -61,6 +59,5 @@ app.use("*", (req, res, next) => {
 		);
 	else next();
 });
-
 
 module.exports = app;
