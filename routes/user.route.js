@@ -12,14 +12,13 @@ router.get("/login", (req, res) => res.send("Login"));
 
 //Register Page
 
-router.get("/seeuser",  async (req, res) => {
-	try{
-		const allUsers =  await User.find()
-		return res.status(200).json(allUsers)
-	}catch{
-		res.status(500).json({ message: err.message })
+router.get("/seeuser", async (req, res) => {
+	try {
+		const allUsers = await User.find();
+		return res.status(200).json(allUsers);
+	} catch {
+		res.status(500).json({ message: err.message });
 	}
-
 });
 
 //Welcome Page
@@ -30,7 +29,7 @@ router.get("/dashboard", ensureAuthenticated, (req, res) =>
 	res.send("dashboard")
 );
 
-//Registe
+//Register
 router.post("/register", (req, res) => {
 	const {
 		name,

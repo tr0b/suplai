@@ -1,4 +1,7 @@
 {
+	"libs":[
+		"infer"
+	],
     "plugins": {
        "node": {}
 	"requirejs": {
