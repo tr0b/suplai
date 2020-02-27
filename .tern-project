@@ -3,7 +3,8 @@
 		"infer"
 	],
     "plugins": {
-       "node": {}
+       "node": {},
+       "es_modules":true,
 	"requirejs": {
       "baseURL": "./",
       "paths": {}
