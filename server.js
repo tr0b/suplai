@@ -15,6 +15,13 @@ app.set("view engine", "html");
 // Middlewares
 app.use(cors());
 app.use(express.json());
+app.use(
+	session({
+		secret: process.env.SESSION_SECRET,
+		resave: false,
+		saveUninitialized: false
+	})
+);
 
 // Static Files
 app.use(express.static(path.join(__dirname, "..", "public")));
@@ -50,14 +57,15 @@ app.use((req, res, next) => {
 
 // Routes
 app.use(process.env.API_BASE_PATH, require("./routes/user.route"));
+app.use(process.env.API_BASE_PATH, require("./routes/request.route"));
 
 // Default Route
-app.use("*", (req, res, next) => {
-	if (!req.originalUrl.includes(process.env.API_BASE_PATH))
-		res.sendFile(
-			path.join(__dirname, "..", "public", "index.html")
-		);
-	else next();
-});
+/* app.use("*", (req, res, next) => {
+ *         if (!req.originalUrl.includes(process.env.API_BASE_PATH))
+ *                 res.sendFile(
+ *                         path.join(__dirname, "..", "public", "index.html")
+ *                 );
+ *         else next();
+ * }); */
 
 module.exports = app;

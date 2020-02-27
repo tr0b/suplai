@@ -43,7 +43,7 @@ router.post("/register", (req, res) => {
 	} = req.body;
 	let errors = [];
 	//Check required fields
-	if (!name || !last_name || !email || !password || !password2 || !type) {
+	if (!name || !last_name || !email || !password || !password2) {
 		errors.push({ msg: "Please fill in all fields" });
 	}
 
@@ -54,18 +54,24 @@ router.post("/register", (req, res) => {
 	if (password.length < 8) {
 		errors.push({
 			msg:
-				"Password must have be composed of at least 8 characters"
+				"Password must be composed of at least 8 characters"
+		});
+	}
+	if (email == password) {
+		errors.push({
+			msg: "Password cannot be the same as email"
 		});
 	}
 	if (errors.length !== 0) {
-		res.send("register", {
-			errors,
-			name,
-			last_name,
-			email,
-			type,
-			password
-		});
+		/* res.send("register", {
+		 *         errors,
+		 *         name,
+		 *         last_name,
+		 *         email,
+		 *         type,
+		 *         password
+		 * }); */
+		res.send(errors);
 	} else {
 		//Validation Passed
 		User.findOne({ email: email }).then(user => {
@@ -128,20 +134,24 @@ router.post("/register", (req, res) => {
 });
 
 //Login Handle
-router.post("/login", (req, res, next) => {
-	passport.authenticate("local", {
-		successRedirect: "/dashboard",
-		failureRedirect: "/users/login",
-		failureFlash: true
-	})(req, res, next);
+/* router.post("/login", (req, res, next) => {
+ *         passport.authenticate("local", {
+ *                 successRedirect: "/dashboard",
+ *                 failureRedirect: "/users/login",
+ *                 failureFlash: true
+ *         })(req, res, next);
+ * }); */
+
+router.post("/login", passport.authenticate("local"), (req, res) => {
+	res.status(200).send({ data: req.user });
 });
 
 //Logout Handle
 
 router.get("/logout", (req, res) => {
 	req.logout();
-	req.flash("success_msg", "You are now logged out!");
 	//Cambiar de rutas al front end nuestro *POR HACER
-	res.redirect("users/login");
+	/* res.redirect("users/login"); */
+	res.send("logout!");
 });
 module.exports = router;

@@ -1,7 +1,7 @@
 //WIP
 const express = require("express");
 const router = express.Router();
-const auth = require("../auth.js");
+const { ensureAuthenticated } = require("../auth");
 //Request Model
 
 const Request = require("../models/request.js");
@@ -9,37 +9,21 @@ const Request = require("../models/request.js");
 //User Model
 
 const User = require("../models/user.js");
-//Add Product
+//Add Request
 
-router.post("/add", auth, (req, res) => {
-	//Authentication implemented for request additions
-	let datecreated = new Date();
-	const { title, description, budget, status, datecreated } = req.body;
-	let errors = [];
-	//Check The Request Required Fields (VALIDATION) TODO
-	if (!title || !description || !budget || !status || !datecreated) {
-		errors.push({ msg: "Please fill in all fields" });
-	} else {
-		//Passed Validation (TODO)
-		const newRequest = new Request({
-			title: title,
-			description: description,
-			budget: budget,
-			status: status,
-			datecreated: datecreated
-		});
+router.post("/addRequest", ensureAuthenticated, async (req, res) => {
+	const request = new Request({
+		...req.body,
+		owner: req.user._id
+	});
 
-		//Save Request (TODO)
-		newRequest
-			.save()
-			.then(request => {
-				req.flash(
-					"success_msg",
-					"Success! Request successfully registered!"
-				);
-			})
-			.catch(err => console.log(err));
-		console.log(newRequest);
-		res.send("new Request Added");
+	try {
+		await request.save();
+		res.status(201).send(request);
+	} catch (e) {
+		/* handle error */
+		res.status(400).send(e);
 	}
 });
+
+module.exports = router;
