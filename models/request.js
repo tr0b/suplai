@@ -7,11 +7,7 @@ const RequestSchema = new Schema({
 	budget: { type: Number, required: true },
 	status: { type: String, required: true },
 	dateCreated: { type: Date, required: true, default: Date.now() },
-	owner: {
-		type: mongoose.Schema.Types.ObjectId, //_id
-		required: true,
-		ref: "User" //User
-	}
+	owner: { type: Schema.Types.ObjectId, ref: "User"}
 });
 
 module.exports = mongoose.model("Request", RequestSchema);

@@ -4,6 +4,7 @@ const flash = require("connect-flash");
 const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
+const passportLocalMongoose = require("passport-local-mongoose");
 const app = express();
 //Passport config
 require("./passport")(passport);
@@ -15,13 +16,7 @@ app.set("view engine", "html");
 // Middlewares
 app.use(cors());
 app.use(express.json());
-app.use(
-	session({
-		secret: process.env.SESSION_SECRET,
-		resave: false,
-		saveUninitialized: false
-	})
-);
+
 
 // Static Files
 app.use(express.static(path.join(__dirname, "..", "public")));
@@ -32,9 +27,9 @@ app.use(express.urlencoded({ extended: false }));
 //Express Session Middleware
 app.use(
 	session({
-		secret: "pianocat",
-		resave: true,
-		saveUninitialized: true,
+		secret: process.env.SESSION_SECRET,
+		resave: false,
+		saveUninitialized: false,
 		cookie: { secure: true }
 	})
 );
@@ -43,17 +38,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-//Connect Flash
-app.use(flash());
-
-//Global Vars
-
-app.use((req, res, next) => {
-	res.locals.success_msg = req.flash("success_msg");
-	res.locals.error_msg = req.flash("error_msg");
-	res.locals.error_msg = req.flash("error");
-	next();
-});
 
 // Routes
 app.use(process.env.API_BASE_PATH, require("./routes/user.route"));
