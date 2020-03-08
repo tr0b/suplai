@@ -10,7 +10,7 @@ const { ensureAuthenticated } = require("../auth");
 //Models
 const User = require("./../models/user.js");
 
-//[GET] See Users
+//[GET] Read Users
 router.get("/users", async (req, res) => {
   try {
     const allUsers = await User.find();
@@ -116,29 +116,20 @@ router.delete("/user/:id", async (req, res) => {
 
 //[GET] Logout User
 router.get("/logout", (req, res) => {
-	req.logout();
-	//Cambiar de rutas al front end nuestro *POR HACER
-	/* res.redirect("users/login"); */
-	res.send("logout!");
-  });
+  req.logout();
+  //Cambiar de rutas al front end nuestro *POR HACER
+  /* res.redirect("users/login"); */
+  res.send("logout!");
+});
 
 //[POST] Login User
-router.post("/login", passport.authenticate("local"), (req, res) => {
-	res.status(200).send({ "Authenticated" });
-  });
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", {
+    successRedirect: "/yes",
+    failureRedirect: "/no"
+  })(req, res, next);
+});
 
 module.exports = router;
-
-//Login Handle
-/* router.post("/login", (req, res, next) => {
- *         passport.authenticate("local", {
- *                 successRedirect: "/dashboard",
- *                 failureRedirect: "/users/login",
- *                 failureFlash: true
- *         })(req, res, next);
- * }); */
-
-
-
 
 
