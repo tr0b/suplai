@@ -1,47 +1,13 @@
 import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: "root"
 })
 export class ReqisicionesService {
-  private requisiciones: any[] = [
-    {
-      ID: "1",
-      titulo: "Req 1",
-      descripcion: "req 1",
-      costo: 999,
-      estadoSolicitud: 1,
-      fecha: new Date()
-    },
-    {
-      ID: "1",
-      titulo: "Req 1",
-      descripcion: "req 1",
-      costo: 999,
-      estadoSolicitud: 1,
-      fecha: new Date()
-    },
-    {
-      ID: "1",
-      titulo: "Req 1",
-      descripcion: "req 1",
-      costo: 999,
-      estadoSolicitud: 1,
-      fecha: new Date()
-    },
-    {
-      ID: "1",
-      titulo: "Req 1",
-      descripcion: "req 1",
-      costo: 999,
-      estadoSolicitud: 1,
-      fecha: new Date()
-    }
-  ];
-
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   obtenerRequisiones() {
-    return this.requisiciones;
+    return this.http.get("http://localhost:3000/api/v1/requisitions");
   }
 }

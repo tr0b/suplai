@@ -10,7 +10,11 @@ export class RequisicionesComponent implements OnInit {
   requisicionces: any[] = [];
 
   constructor(public requsicionesService: ReqisicionesService) {
-    this.requisicionces = requsicionesService.obtenerRequisiones();
+    requsicionesService.obtenerRequisiones().subscribe((data: any) => {
+      this.requisicionces = data;
+      console.log(data);
+      console.log(this.requisicionces);
+    });
   }
 
   ngOnInit() {}

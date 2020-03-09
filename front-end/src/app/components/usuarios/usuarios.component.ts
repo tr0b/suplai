@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from "../../services/usuarios.service";
 
 @Component({
@@ -10,7 +10,9 @@ export class UsuariosComponent implements OnInit {
   usuarios: any[] = [];
 
   constructor(public usuariosService: UsuariosService) {
-    this.usuarios = usuariosService.obtenerUsuarios();
+    usuariosService.obtenerUsuarios().subscribe((data: any) => {
+      this.usuarios = data;
+    });
   }
 
   ngOnInit() {}

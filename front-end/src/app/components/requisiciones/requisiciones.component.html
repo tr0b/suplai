@@ -39,6 +39,7 @@
               <thead>
                 <tr>
                   <th>ID</th>
+                  <th>Encargado</th>
                   <th>Titulo</th>
                   <th>Descripcion</th>
                   <th>Costo</th>
@@ -47,12 +48,13 @@
               </thead>
               <tbody>
                 <tr *ngFor="let requisicion of this.requisicionces">
-                  <td>{{ requisicion.ID }}</td>
-                  <td>{{ requisicion.titulo }}</td>
-                  <td>{{ requisicion.descripcion }}</td>
-                  <td>{{ requisicion.costo }}</td>
+                  <td>{{ requisicion._id }}</td>
+                  <td>{{ requisicion.owner }}</td>
+                  <td>{{ requisicion.title }}</td>
+                  <td>{{ requisicion.description }}</td>
+                  <td>{{ requisicion.budget }}</td>
                   <td>
-                    {{ requisicion.estadoSolicitud }}
+                    {{ requisicion.status }}
                   </td>
                 </tr>
               </tbody>

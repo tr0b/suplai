@@ -40,16 +40,18 @@
                 <tr>
                   <th>ID</th>
                   <th>Usuario</th>
+                  <th>Jefe</th>
                   <th>Correo</th>
                   <th>Tipo Usuario</th>
                 </tr>
               </thead>
               <tbody>
                 <tr *ngFor="let usuario of this.usuarios">
-                  <td>{{ usuario.ID }}</td>
-                  <td>{{ usuario.nombre + " " + usuario.apellidos }}</td>
-                  <td>{{ usuario.correo }}</td>
-                  <td>{{ usuario.tipoUsuario }}</td>
+                  <td>{{ usuario._id }}</td>
+                  <td>{{ usuario.name + " " + usuario.last_name }}</td>
+                  <td>{{ usuario.boss }}</td>
+                  <td>{{ usuario.email }}</td>
+                  <td>{{ usuario.type }}</td>
                 </tr>
               </tbody>
             </table>
