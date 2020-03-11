@@ -8,9 +8,21 @@
       <div class="card-body login-card-body">
         <p class="login-box-msg">Iniciar Sesión</p>
 
-        <form (ngSubmit)="onSubmit(form)" #loginForm="ngForm" method="post">
+        <form
+          (ngSubmit)="onSubmit(loginForm)"
+          #loginForm="ngForm"
+          method="post"
+        >
           <div class="input-group mb-3">
-            <input type="email" class="form-control" placeholder="Correo" />
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Correo"
+              name="email"
+              ngModel
+              required
+              #email="ngModel"
+            />
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-envelope"></span>
@@ -21,7 +33,11 @@
             <input
               type="password"
               class="form-control"
+              name="password"
               placeholder="Contraseña"
+              ngModel
+              required
+              #password="ngModel"
             />
             <div class="input-group-append">
               <div class="input-group-text">

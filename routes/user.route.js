@@ -158,21 +158,9 @@ router.get("/logout", (req, res) => {
 
 //[POST] Login User
 router.post("/login", (req, res, next) => {
-	passport.authenticate("local", function(error, user, info) {
-		if (error) {
-			return res.status(501).json(error);
-		}
-		if (!user) {
-			return res.status(501).json(info);
-		}
-		req.logIn(user, function(err) {
-			if (err) {
-				return res.status(501).json(err);
-			}
-			return res
-				.status(200)
-				.json({ message: "Login Success" });
-		});
+	passport.authenticate("local", {
+		successRedirect: "/yes",
+		failureRedirect: "/no"
 	})(req, res, next);
 });
 
