@@ -1,0 +1,122 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Perfil</h1>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <div class="text-center">
+                <img
+                  class="profile-user-img img-fluid img-circle"
+                  src="../../dist/img/user4-128x128.jpg"
+                  alt="User profile picture"
+                />
+              </div>
+
+              <h3 class="profile-username text-center">
+                {{ usuario.name + " " + usuario.last_name }}
+              </h3>
+
+              <p class="text-muted text-center">{{ usuario.type }}</p>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header p-2">
+              Información
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Nombre:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Nombre"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Apellidos:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Apellidos"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1"
+                    >Correo Electrónico:</label
+                  >
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Correo Electrónico"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Tipo usuario:</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Jefe:</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlSelect1">Estado:</label>
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>
+  </section>
+</div>
+<app-footer></app-footer>
