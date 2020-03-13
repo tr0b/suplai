@@ -1,10 +1,10 @@
 //Libraries
 const express = require("express");
 const cors = require("cors");
-const flash = require("connect-flash");
 const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
+const cookieParser = require("cookie-parser");
 const app = express();
 
 //Passport config
@@ -15,7 +15,13 @@ app.set("port", process.env.PORT || 3000);
 app.set("view engine", "html");
 
 // Middlewares
-app.use(cors());
+app.use(
+	cors({
+		origin: ["http://localhost:4200", "http://127.0.0.1:4200"],
+		credentials: true
+	})
+);
+
 app.use(express.json());
 
 // Static Files
@@ -27,9 +33,15 @@ app.use(express.urlencoded({ extended: false }));
 //Express Session Middleware
 app.use(
 	session({
+		name: "suplai.sid",
 		secret: process.env.SESSION_SECRET,
-		resave: true,
-		saveUninitialized: true,
+		resave: false,
+		saveUninitialized: false,
+		cookie: {
+			maxAge: 7200,
+			httpOnly: false,
+			secure: false
+		}
 	})
 );
 
@@ -37,6 +49,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+//Cookie Parser
+app.use(cookieParser());
 // Routes
 app.use(process.env.API_BASE_PATH, require("./routes/user.route"));
 app.use(process.env.API_BASE_PATH, require("./routes/requisition.route"));

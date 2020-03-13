@@ -12,7 +12,9 @@ export class LoginService {
     console.log(password);
     return this.http.post("http://localhost:3000/api/v1/login", {
       email: email,
-      password: password
+      password: password,
+      withCredentials: true,
+      credentials: "include"
     });
   }
 }
