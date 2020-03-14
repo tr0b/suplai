@@ -12,6 +12,6 @@ export class UsuariosService {
   }
 
   obtenerUsuarioPorID(id: string) {
-    return this.http.put("http://localhost:3000/api/v1/user/" + id, "");
+    return this.http.get("http://localhost:3000/api/v1/users/" + id);
   }
 }
