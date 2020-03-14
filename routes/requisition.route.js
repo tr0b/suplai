@@ -10,7 +10,7 @@ const Requisition = require("../models/requisition");
 const User = require("../models/user.js");
 
 //[GET] Read Requisitions
-router.get("/requisitions", async (req, res) => {
+router.get("/requisitions", ensureAuthenticated, async (req, res) => {
 	try {
 		const allReq = await Requisition.find();
 		return res.status(200).json(allReq);
