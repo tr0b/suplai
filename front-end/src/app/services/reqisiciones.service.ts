@@ -8,6 +8,7 @@ export class ReqisicionesService {
   constructor(private http: HttpClient) {}
 
   obtenerRequisiones() {
-    return this.http.get("http://localhost:3000/api/v1/requisitions");
+  return this.http.get("http://localhost:3000/api/v1/requisitions",{withCredentials:true});
+
   }
 }

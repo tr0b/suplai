@@ -8,7 +8,7 @@ export class UsuariosService {
   constructor(private http: HttpClient) {}
 
   obtenerUsuarios() {
-    return this.http.get("http://localhost:3000/api/v1/users"); // ya regreso
+    return this.http.get("http://localhost:3000/api/v1/users",{withCredentials:true}); // ya regreso
   }
 
   obtenerUsuarioPorID(id: string) {

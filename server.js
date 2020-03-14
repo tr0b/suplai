@@ -33,10 +33,9 @@ app.use(express.urlencoded({ extended: false }));
 //Express Session Middleware
 app.use(
 	session({
-		name: "suplai.sid",
 		secret: process.env.SESSION_SECRET,
-		resave: false,
-		saveUninitialized: false,
+		resave: true,
+		saveUninitialized: true,
 		cookie: {
 			maxAge: 7200,
 			httpOnly: false,
