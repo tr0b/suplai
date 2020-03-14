@@ -14,7 +14,7 @@ module.exports = function(passport) {
         .then(user => {
           if (!user) {
             return done(null, false, {
-              message: "That email does not exist"
+              message: "The email is not registered"
             });
           }
           //Match Password
@@ -23,18 +23,18 @@ module.exports = function(passport) {
             if (isMatch) {
               return done(null, user);
             } else {
-              return done(null, false, {
-                message: "Password Incorrect"
-              });
+              return done(null, false, { message: "Password Incorrect" });
             }
           });
         })
         .catch(err => console.log(err));
     })
   );
+
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
+
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
       done(err, user);
