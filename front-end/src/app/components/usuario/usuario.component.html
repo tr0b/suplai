@@ -44,74 +44,107 @@
         <div class="col-md-9">
           <div class="card">
             <div class="card-header p-2">
-              Información
+              <h3 class="card-title">Información</h3>
+
+              <div class="card-tools">
+                <div>
+                  <button
+                    type="button"
+                    class="btn  btn-primary"
+                    (click)="editarUsuario()"
+                    *ngIf="!this.editar"
+                  >
+                    <i class="nav-icon fas fa-user-edit"></i>
+                    Editar
+                  </button>
+                </div>
+              </div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <form>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Nombre:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Nombre"
-                    [(ngModel)]="usuario.name"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1">Apellidos:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Apellidos"
-                    [(ngModel)]="usuario.last_name"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlInput1"
-                    >Correo Electrónico:</label
-                  >
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Correo Electrónico"
-                    [(ngModel)]="usuario.email"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Tipo usuario:</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Jefe:</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleFormControlSelect1">Estado:</label>
-                  <select class="form-control" id="exampleFormControlSelect1">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </select>
-                </div>
+                <fieldset [disabled]="!this.editar">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Nombre:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Nombre"
+                      [(ngModel)]="usuario.name"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Apellidos:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Apellidos"
+                      [(ngModel)]="usuario.last_name"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1"
+                      >Correo Electrónico:</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Correo Electrónico"
+                      [(ngModel)]="usuario.email"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Tipo usuario:</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Jefe:</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Estado:</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                  </div>
+                </fieldset>
               </form>
+              <div class="btn__box" *ngIf="this.editar">
+                <button type="submit" class="btn  btn-success">
+                  <i class="nav-icon fas fa-plus"></i>
+                  Agregar
+                </button>
+                <button
+                  type="button"
+                  class="btn  btn-danger"
+                  (click)="editarUsuario()"
+                >
+                  <i class="nav-icon fas fa-window-close"></i>
+                  Cancelar
+                </button>
+              </div>
             </div>
             <!-- /.card-body -->
           </div>

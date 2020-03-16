@@ -9,6 +9,7 @@ import { UsuarioModel } from "../../models/usuario.model";
 })
 export class UsuariosComponent implements OnInit {
   usuarios: UsuarioModel[] = [];
+ 
 
   constructor(public usuariosService: UsuariosService) {
     usuariosService.obtenerUsuarios().subscribe((data: any) => {

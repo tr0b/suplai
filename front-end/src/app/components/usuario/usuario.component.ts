@@ -10,6 +10,7 @@ import { UsuarioModel } from "../../models/usuario.model";
 })
 export class UsuarioComponent implements OnInit {
   usuario: UsuarioModel;
+  editar: boolean = false;
 
   constructor(
     private router: ActivatedRoute,
@@ -29,5 +30,9 @@ export class UsuarioComponent implements OnInit {
         this.usuario = data;
         console.log(this.usuario);
       });
+  }
+
+  editarUsuario() {
+    this.editar = !this.editar;
   }
 }

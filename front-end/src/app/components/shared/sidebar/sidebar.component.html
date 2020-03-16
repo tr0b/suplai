@@ -1,14 +1,14 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  
+
   <a href="index3.html" class="brand-link">
     <img
       src="assets/dist/img/suplai-blanco.png"
       alt="suplai-blanco2"
       height="100px"
       width="200px"
-    /> 
+    />
   </a>
 
   <!-- Sidebar -->
@@ -16,7 +16,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="info">
-        <a href="#" class="d-block">Alexander Pierce</a>
+        <a href="#" class="d-block">{{ "Julian" }}</a>
       </div>
     </div>
 
@@ -34,7 +34,7 @@
           <a
             [routerLink]="['/home']"
             routerLinkActive="active"
-            class="nav-link" 
+            class="nav-link"
           >
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
@@ -126,6 +126,14 @@
               </a>
             </li>
           </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="cerrarSesion()">
+            <i class="nav-icon fas fa-power-off"></i>
+            <p>
+              Cerrar Sesión
+            </p>
+          </a>
         </li>
       </ul>
     </nav>
