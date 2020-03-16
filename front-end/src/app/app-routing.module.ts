@@ -18,7 +18,7 @@ const routes: Routes = [
   { path: "agregarUsuario", component: AgregarUsuarioComponent },
   { path: "login", component: LoginComponent },
   { path: "registro", component: RegistroComponent },
-  { path: "", pathMatch: "full", redirectTo: "home" },
+  { path: "", pathMatch: "full", redirectTo: "login" },
   { path: "**", pathMatch: "full", redirectTo: "home" }
 ];
 

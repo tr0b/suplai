@@ -19,6 +19,18 @@ router.get("/requisitions", ensureAuthenticated, async (req, res) => {
 	}
 });
 
+//[GET] Read Requisitions
+router.get("/userrequisitions", ensureAuthenticated, async (req, res) => {
+	try {
+		const requisitions = await Requisition.find({owner:req.user._id})
+		return res.status(200).json(requisitions);
+	} catch {
+		res.status(500).json({ message: err.message });
+	}
+});
+
+
+
 //[POST] Create Requisitions
 router.post("/addRequisition", ensureAuthenticated, (req, res) => {
 	const { title, description, budget } = req.body;

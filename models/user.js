@@ -11,5 +11,6 @@ const UserSchema = new Schema({
 	boss: { type: Schema.Types.ObjectId, ref: "User" }
 });
 
+
 const User = mongoose.model("User", UserSchema);
 module.exports = User;
