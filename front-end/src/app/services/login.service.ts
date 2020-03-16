@@ -16,6 +16,7 @@ export class LoginService {
       },
       {
         withCredentials: true,
+        responseType: "text",
         headers: new HttpHeaders().append("Content-Type", "application/json")
       }
     );
@@ -23,6 +24,8 @@ export class LoginService {
 
   logOut() {
     console.log("estamos aca");
-    return this.http.get("http://localhost:3000/api/v1/logout");
+    return this.http.get("http://localhost:3000/api/v1/logout", {
+      responseType: "text"
+    });
   }
 }
