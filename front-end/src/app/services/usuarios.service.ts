@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { UsuarioModel } from "../models/usuario.model";
 
 @Injectable({
@@ -18,14 +18,16 @@ export class UsuariosService {
     return this.http.get("http://localhost:3000/api/v1/users/" + id);
   }
 
-  crearUsuario(usuario: UsuarioModel) {
+  crearUsuario(usuario: any) {
+    console.log("Crear usuarios");
+    console.log(usuario);
     return this.http.post("http://localhost:3000/api/v1/register", {
-      name: usuario.name,
-      last_name: usuario.last_name,
-      email: usuario.email,
-      password: usuario.password,
-      type: usuario.type,
-      boss: usuario.boss
+      name: usuario.nombre,
+      last_name: usuario.apellidos,
+      email: usuario.correo,
+      password: usuario.contrasena,
+      type: usuario.tipoUsuario,
+      boss: usuario.jefeUsuario
     });
   }
 
