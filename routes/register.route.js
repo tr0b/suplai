@@ -13,7 +13,6 @@ router.post("/register", (req, res) => {
 		last_name,
 		email,
 		password,
-		password2,
 		type,
 		status,
 		buyerInfo,
@@ -23,18 +22,10 @@ router.post("/register", (req, res) => {
 	let errors = [];
 	//Check required fields
 	if (
-		(!name ||
-		!last_name ||
-		!email ||
-		!password ||
-		!password2) &&
-		(!buyerInfo||!bossInfo||!financerInfo)
+		(!name || !last_name || !email || !password) &&
+		(!buyerInfo || !bossInfo || !financerInfo)
 	) {
 		errors.push({ msg: "Please fill in all fields" });
-	}
-	//Check if Passwords Match
-	if (password !== password2) {
-		errors.push({ msg: "Passwords do not match" });
 	}
 	//Check if password minimum length is reached
 	if (password.length < 8) {
@@ -67,10 +58,10 @@ router.post("/register", (req, res) => {
 					last_name: last_name,
 					email: email,
 					password: password,
-					type:type,
+					type: type,
 					buyerInfo: buyerInfo,
-					bossInfo:bossInfo,
-					financerInfo:financerInfo
+					bossInfo: bossInfo,
+					financerInfo: financerInfo
 				});
 				console.log(newUser);
 				res.send("new User Added");
