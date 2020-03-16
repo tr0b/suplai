@@ -50,24 +50,12 @@ router.get("/users", async (req, res) => {
 
 // [POST] Create User
 router.post("/register", (req, res) => {
-	const {
-		name,
-		last_name,
-		email,
-		password,
-		password2,
-		type,
-		boss
-	} = req.body;
+	const { name, last_name, email, password, type, boss } = req.body;
 	let errors = [];
 
 	//Check required fields
-	if (!name || !last_name || !email || !password || !password2 || !type) {
+	if (!name || !last_name || !email || !password || !type) {
 		errors.push({ msg: "Please fill in all fields" });
-	}
-
-	if (password !== password2) {
-		errors.push({ msg: "Passwords do not match" });
 	}
 
 	if (password.length < 8) {
