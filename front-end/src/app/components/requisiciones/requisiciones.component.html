@@ -52,7 +52,7 @@
                 <tbody>
                   <tr *ngFor="let requisicion of this.requisicionces">
                     <td>{{ requisicion._id }}</td>
-                    <td>{{ requisicion.owner }}</td>
+                    <td>{{ requisicion.owner.name + " " + requisicion.owner.last_name }}</td>
                     <td>{{ requisicion.title }}</td>
                     <td>{{ requisicion.description }}</td>
                     <td>{{ requisicion.budget }}</td>

@@ -12,7 +12,7 @@ const User = require("../models/user.js");
 //[GET] Read Requisitions
 router.get("/requisitions", ensureAuthenticated, async (req, res) => {
 	try {
-		const allReq = await Requisition.find();
+		const allReq = await Requisition.find().populate("owner");
 		return res.status(200).json(allReq);
 	} catch {
 		res.status(500).json({ message: err.message });
@@ -22,13 +22,12 @@ router.get("/requisitions", ensureAuthenticated, async (req, res) => {
 //[GET] Read Requisitions
 router.get("/userrequisitions", ensureAuthenticated, async (req, res) => {
 	try {
-		const requisitions = await Requisition.find({owner:req.user._id})
+		const requisitions = await Requisition.find({owner:req.user._id}).populate("owner");
 		return res.status(200).json(requisitions);
-	} catch {
+	} catch(err) {
 		res.status(500).json({ message: err.message });
 	}
 });
-
 
 
 //[POST] Create Requisitions

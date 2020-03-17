@@ -18,4 +18,8 @@ export class SidebarComponent implements OnInit {
       console.log(data);
     });
   }
+
+  getName(){
+    return window.localStorage.getItem("name");
+  }
 }
