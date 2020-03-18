@@ -18,6 +18,7 @@ import { AgregarUsuarioComponent } from "./components/agregar-usuario/agregar-us
 import { AgregarRequisicionComponent } from "./components/agregar-requisicion/agregar-requisicion.component";
 import { HttpClientModule } from "@angular/common/http";
 import { UsuarioComponent } from './components/usuario/usuario.component';
+import { RequisicionComponent } from './components/requisicion/requisicion.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
     ReportesComponent,
     AgregarUsuarioComponent,
     AgregarRequisicionComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    RequisicionComponent
   ],
   imports: [
     BrowserModule,

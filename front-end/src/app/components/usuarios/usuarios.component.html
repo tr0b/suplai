@@ -53,9 +53,11 @@
                     *ngFor="let usuario of this.usuarios"
                     [routerLink]="['/usuario', usuario._id]"
                   >
-                    <td>{{ usuario._id }}</td>
+                    <td>{{ usuario._id | slice: -5 }}</td>
                     <td>{{ usuario.name + " " + usuario.last_name }}</td>
-                    <td>{{ usuario.boss.name + " " + usuario.boss.last_name }}</td>
+                    <td>
+                      {{ usuario.boss.name + " " + usuario.boss.last_name }}
+                    </td>
                     <td>{{ usuario.email }}</td>
                     <td>{{ usuario.type }}</td>
                   </tr>

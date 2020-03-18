@@ -15,12 +15,12 @@ export class ReqisicionesService {
   }
 
   obtenerRequisicionPorID(id: string) {
-    return this.http.get("http://localhost:3000/api/v1/requisition/" + id, {
+    return this.http.get("http://localhost:3000/api/v1/requisitions/" + id, {
       withCredentials: true
     });
   }
 
-  crearRequisicion(requisicion: RequisicionModel) {
+  crearRequisicion(requisicion: any) {
     return this.http.post("http://localhost:3000/api/v1/requisition", {
       withCredentials: true,
       title: requisicion.title,

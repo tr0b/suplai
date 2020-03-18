@@ -51,10 +51,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let requisicion of this.requisicionces">
-                    <td>{{ requisicion._id }}</td>
-                    <td>{{ requisicion.owner.name + " " + requisicion.owner.last_name }}</td>
-                    <td>{{ requisicion.owner.boss.name + " " + requisicion.owner.boss.last_name }}</td>
+                  <tr
+                    *ngFor="let requisicion of this.requisicionces"
+                    [routerLink]="['/requisicion', requisicion._id]"
+                  >
+                    <td>{{ requisicion._id | slice: -5 }}</td>
+                    <td>
+                      {{
+                        requisicion.owner.name +
+                          " " +
+                          requisicion.owner.last_name
+                      }}
+                    </td>
+                    <td>
+                      {{
+                        requisicion.owner.boss.name +
+                          " " +
+                          requisicion.owner.boss.last_name
+                      }}
+                    </td>
                     <td>{{ requisicion.title }}</td>
                     <td>{{ requisicion.description }}</td>
                     <td>{{ requisicion.budget }}</td>

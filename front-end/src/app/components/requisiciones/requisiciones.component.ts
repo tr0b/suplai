@@ -12,8 +12,6 @@ export class RequisicionesComponent implements OnInit {
   constructor(public requsicionesService: ReqisicionesService) {
     requsicionesService.obtenerRequisiones().subscribe((data: any) => {
       this.requisicionces = data;
-      console.log(data);
-      console.log(this.requisicionces);
     });
   }
 
