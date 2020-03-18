@@ -41,7 +41,7 @@ router.get("/userFilter", async (req, res) => {
 //[GET] Read Users
 router.get("/users", async (req, res) => {
 	try {
-		const allUsers = await User.find();
+		const allUsers = await User.find().populate("boss");
 		return res.status(200).json(allUsers);
 	} catch {
 		res.status(500).json({ message: err.message });

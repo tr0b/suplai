@@ -43,6 +43,7 @@
                   <tr>
                     <th>ID</th>
                     <th>Encargado</th>
+                    <th>Jefe</th>
                     <th>Titulo</th>
                     <th>Descripcion</th>
                     <th>Costo</th>
@@ -53,6 +54,7 @@
                   <tr *ngFor="let requisicion of this.requisicionces">
                     <td>{{ requisicion._id }}</td>
                     <td>{{ requisicion.owner.name + " " + requisicion.owner.last_name }}</td>
+                    <td>{{ requisicion.owner.boss.name + " " + requisicion.owner.boss.last_name }}</td>
                     <td>{{ requisicion.title }}</td>
                     <td>{{ requisicion.description }}</td>
                     <td>{{ requisicion.budget }}</td>
