@@ -35,6 +35,35 @@ router.get("/requisitions", ensureAuthenticated, async (req, res) => {
 		res.status(500).json({ message: err.message });
 	}
 });
+//[GET] Read a Requisition
+router.get("/requisitions/:id", ensureAuthenticated, async (req, res) => {
+	try {
+		var requisition;
+		if (req.user.type == "admin") {
+			console.log("ADMIN");
+			requisition = await Requisition.findById(
+				req.params.id
+			).populate({
+				path: "owner",
+				populate: {
+					path: "boss"
+				}
+			});
+		} else {
+			requisition = await Requisition.findById(
+				req.params.id
+			).populate({
+				path: "owner",
+				populate: {
+					path: "boss"
+				}
+			});
+		}
+		return res.status(200).json(requisition);
+	} catch (err) {
+		res.status(500).json({ message: err.message });
+	}
+});
 
 //[POST] Create Requisitions
 router.post("/requisition", ensureAuthenticated, (req, res) => {
