@@ -8,6 +8,8 @@ import { UsuariosService } from "../../services/usuarios.service";
   styleUrls: ["./agregar-usuario.component.css"]
 })
 export class AgregarUsuarioComponent implements OnInit {
+  selectInfo: any[] = [];
+
   forma: FormGroup;
   constructor(private usuariosService: UsuariosService) {
     this.forma = new FormGroup({
@@ -31,5 +33,24 @@ export class AgregarUsuarioComponent implements OnInit {
     this.usuariosService
       .crearUsuario(this.forma.value)
       .subscribe(data => console.log(data));
+  }
+
+  seleccionarUsuario(tipoUsuario: string) {
+    switch (tipoUsuario) {
+      case "BUYER":
+        this.usuariosService
+          .obtenerDatosComboBox("BOSS")
+          .subscribe((data: any[]) => {
+            this.selectInfo = data;
+          });
+        break;
+      case "BOSS":
+        this.usuariosService
+          .obtenerDatosComboBox("FINANCER")
+          .subscribe((data: any[]) => {
+            this.selectInfo = data;
+          });
+        break;
+    }
   }
 }

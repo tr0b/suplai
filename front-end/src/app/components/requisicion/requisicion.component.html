@@ -6,7 +6,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Perfil</h1>
+          <h1 class="m-0 text-dark">Requisición #{{ this.requisicion._id }}</h1>
         </div>
       </div>
       <!-- /.row -->
@@ -15,8 +15,40 @@
   </div>
   <!-- /.content-header -->
   <section class="content">
-    <div class="container-fluid"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col">ID: {{ this.requisicion._id }}</div>
+        <div>
+          <div
+            class="alert alert-warning alert-dismissible"
+            *ngIf="this.requisicion.status"
+          >
+            <h5><i class="icon fas fa-exclamation-triangle"></i>Estado:</h5>
+            {{ this.requisicion.status }}
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>
+            Fecha creación:
+            {{ this.requisicion.dateCreated | date: "MM/dd/yy" }}
+          </p>
+          <p>
+            Titulo:
+            {{ this.requisicion.title }}
+          </p>
+          <p>
+            Descripcion:
+            {{ this.requisicion.description }}
+          </p>
+          <p>
+            Precio:
+            {{ this.requisicion.budget }}
+          </p>
+        </div>
+      </div>
+    </div>
   </section>
-  <p>requisicion works!</p>
 </div>
 <app-footer></app-footer>

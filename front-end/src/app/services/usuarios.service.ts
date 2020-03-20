@@ -19,8 +19,6 @@ export class UsuariosService {
   }
 
   crearUsuario(usuario: any) {
-    console.log("Crear usuarios");
-    console.log(usuario);
     return this.http.post("http://localhost:3000/api/v1/register", {
       name: usuario.nombre,
       last_name: usuario.apellidos,
@@ -46,5 +44,11 @@ export class UsuariosService {
     return this.http.put("http://localhost:3000/api/v1/user/" + id, {
       status: false
     });
+  }
+
+  obtenerDatosComboBox(tipoUsuario: string) {
+    return this.http.get(
+      "http://localhost:3000/api/v1/userFilter?type=" + tipoUsuario
+    );
   }
 }

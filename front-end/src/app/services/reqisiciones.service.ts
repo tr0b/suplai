@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { RequisicionModel } from "../models/requesicion.model";
 
 @Injectable({
@@ -21,11 +21,18 @@ export class ReqisicionesService {
   }
 
   crearRequisicion(requisicion: any) {
-    return this.http.post("http://localhost:3000/api/v1/requisition", {
-      withCredentials: true,
-      title: requisicion.title,
-      description: requisicion.description,
-      budget: requisicion.budget
-    });
+    var numBudget = +requisicion.budget;
+    return this.http.post(
+      "http://localhost:3000/api/v1/requisition",
+      {
+        title: requisicion.title,
+        description: requisicion.description,
+        budget: numBudget
+      },
+      {
+        withCredentials: true,
+        headers: new HttpHeaders().append("Content-Type", "application/json")
+      }
+    );
   }
 }

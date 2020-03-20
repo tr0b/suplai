@@ -37,25 +37,35 @@
                       <input
                         type="text"
                         class="form-control"
-                        id="exampleInputEmail1"
-                        aria-describedby="emailHelp"
-                        formControlName="nombre"
+                        id="title"
+                        formControlName="title"
                       />
                     </div>
                     <div class="form-group">
-                      <label for="exampleFormControlTextarea1"
-                        >Descripcion</label
-                      >
-                      <textarea
+                      <label for="exampleInputEmail1">Descripcion</label>
+                      <input
+                        type="text"
                         class="form-control"
-                        id="exampleFormControlTextarea1"
-                        rows="3"
-                        formControlName="descripcion"
-                      ></textarea>
+                        id="description"
+                        formControlName="description"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Presupuesto</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="budget"
+                        formControlName="budget"
+                      />
                     </div>
                   </form>
                   <div class="btn__box">
-                    <button type="button" class="btn  btn-success">
+                    <button
+                      type="submit"
+                      class="btn  btn-success"
+                      (click)="guardarCambios()"
+                    >
                       <i class="fas fa-plus"></i>
                       Agregar
                     </button>
