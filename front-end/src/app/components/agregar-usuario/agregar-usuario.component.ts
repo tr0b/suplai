@@ -9,6 +9,7 @@ import { UsuariosService } from "../../services/usuarios.service";
 })
 export class AgregarUsuarioComponent implements OnInit {
   selectInfo: any[] = [];
+  selectUsuario: string;
 
   forma: FormGroup;
   constructor(private usuariosService: UsuariosService) {
@@ -36,6 +37,7 @@ export class AgregarUsuarioComponent implements OnInit {
   }
 
   seleccionarUsuario(tipoUsuario: string) {
+    this.selectUsuario = tipoUsuario;
     switch (tipoUsuario) {
       case "BUYER":
         this.usuariosService
@@ -52,5 +54,6 @@ export class AgregarUsuarioComponent implements OnInit {
           });
         break;
     }
+    console.log(this.selectUsuario);
   }
 }

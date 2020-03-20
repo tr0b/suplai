@@ -17,8 +17,8 @@ import { ReportesComponent } from "./components/reportes/reportes.component";
 import { AgregarUsuarioComponent } from "./components/agregar-usuario/agregar-usuario.component";
 import { AgregarRequisicionComponent } from "./components/agregar-requisicion/agregar-requisicion.component";
 import { HttpClientModule } from "@angular/common/http";
-import { UsuarioComponent } from './components/usuario/usuario.component';
-import { RequisicionComponent } from './components/requisicion/requisicion.component';
+import { UsuarioComponent } from "./components/usuario/usuario.component";
+import { RequisicionComponent } from "./components/requisicion/requisicion.component";
 
 @NgModule({
   declarations: [
@@ -42,6 +42,7 @@ import { RequisicionComponent } from './components/requisicion/requisicion.compo
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

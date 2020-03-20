@@ -62,17 +62,20 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <form>
+              <form
+                [formGroup]="forma"
+                (ngSubmit)="guardarCambios()"
+                novalidate="novalidate"
+              >
                 <fieldset [disabled]="!this.editar">
                   <div class="form-group">
                     <label for="exampleFormControlInput1">Nombre:</label>
                     <input
                       type="text"
                       class="form-control"
-                      id="exampleFormControlInput1"
+                      name="nombre"
                       placeholder="Nombre"
-                      [(ngModel)]="usuario.name"
-                      [ngModelOptions]="{ standalone: true }"
+                      formControlName="nombre"
                     />
                   </div>
                   <div class="form-group">
@@ -82,8 +85,8 @@
                       class="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Apellidos"
-                      [(ngModel)]="usuario.last_name"
-                      [ngModelOptions]="{ standalone: true }"
+                      formControlName="apellidos"
+                      name="apellidos"
                     />
                   </div>
                   <div class="form-group">
@@ -95,25 +98,27 @@
                       class="form-control"
                       id="exampleFormControlInput1"
                       placeholder="Correo Electrónico"
-                      [(ngModel)]="usuario.email"
-                      [ngModelOptions]="{ standalone: true }"
+                      formControlName="correo"
                     />
                   </div>
                   <div class="form-group">
-                    <label for="exampleFormControlSelect1">Tipo usuario:</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>1</option>
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label for="exampleFormControlSelect1">Jefe:</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                      <option>1</option>
-                    </select>
+                    <label for="exampleFormControlInput1">Contraseña:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="contrasena"
+                      formControlName="contrasena"
+                      name="contrasena"
+                    />
                   </div>
                   <div class="form-group">
                     <label for="exampleFormControlSelect1">Estado:</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
+                    <select
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                      formControlName="tipoEstado"
+                    >
                       <option value="1">Activo</option>
                       <option value="0">Inactivo</option>
                     </select>
@@ -121,7 +126,11 @@
                 </fieldset>
               </form>
               <div class="btn__box" *ngIf="this.editar">
-                <button type="submit" class="btn  btn-success">
+                <button
+                  type="submit"
+                  class="btn  btn-success"
+                  (click)="guardarCambios()"
+                >
                   <i class="nav-icon fas fa-plus"></i>
                   Agregar
                 </button>
