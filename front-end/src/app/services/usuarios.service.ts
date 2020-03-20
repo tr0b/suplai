@@ -30,7 +30,8 @@ export class UsuariosService {
   }
 
   editarUsuario(usuario: UsuarioModel) {
-    return this.http.put("http://localhost:3000/api/v1/user/" + usuario._id, {
+    console.log(usuario.name);
+    return this.http.put("http://localhost:3000/api/v1/users/" + usuario._id, {
       name: usuario.name,
       last_name: usuario.last_name,
       email: usuario.email,
