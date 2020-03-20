@@ -29,15 +29,15 @@ export class UsuariosService {
     });
   }
 
-  editarUsuario(usuario: UsuarioModel) {
+  editarUsuario(usuario: any, id) {
     console.log(usuario.name);
-    return this.http.put("http://localhost:3000/api/v1/users/" + usuario._id, {
-      name: usuario.name,
-      last_name: usuario.last_name,
-      email: usuario.email,
-      password: usuario.password,
-      type: usuario.type,
-      boss: usuario.boss
+    return this.http.put("http://localhost:3000/api/v1/user/" + id, {
+      name: usuario.nombre,
+      last_name: usuario.apellidos,
+      email: usuario.correo,
+      password: usuario.contrasena,
+      type: usuario.tipoUsuario,
+      boss: usuario.jefeUsuario
     });
   }
 
