@@ -1,54 +1,99 @@
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
+<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
-  <div class="content-header">
+  <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Requisición #{{ this.requisicion._id }}</h1>
+          <h1>Requisiciones</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+          </ol>
         </div>
       </div>
-      <!-- /.row -->
-    </div>
-    <!-- /.container-fluid -->
-  </div>
-  <!-- /.content-header -->
-  <section class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col">ID: {{ this.requisicion._id }}</div>
-        <div>
-          <div
-            class="alert alert-warning alert-dismissible"
-            *ngIf="this.requisicion.status"
-          >
-            <h5><i class="icon fas fa-exclamation-triangle"></i>Estado:</h5>
-            {{ this.requisicion.status }}
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col">
-          <p>
-            Fecha creación:
-            {{ this.requisicion.dateCreated | date: "MM/dd/yy" }}
-          </p>
-          <p>
-            Titulo:
-            {{ this.requisicion.title }}
-          </p>
-          <p>
-            Descripcion:
-            {{ this.requisicion.description }}
-          </p>
-          <p>
-            Precio:
-            {{ this.requisicion.budget }}
-          </p>
-        </div>
-      </div>
-    </div>
+    </div><!-- /.container-fluid -->
   </section>
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="callout callout-info">
+            <h5><i class="fas fa-info"></i> Importante:</h5>
+Esta requesición aún requiere de su aprobación. Por favor verifique y tome acción del estado.        </div>
+
+
+          <!-- Main content -->
+          <div class="invoice p-3 mb-3">
+            <!-- title row -->
+            <div class="row">
+              <div class="col-12">
+                <h4>
+                  <i class="fas fa-file-signature"></i> Requesición# {{ this.requisicion._id }}
+                  <small class="float-right">Fecha Creada: {{ this.requisicion.dateCreated | date: "MM/dd/yy" }}</small>
+                </h4>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- info row -->
+          
+
+            <div class="row">
+              <!-- accepted payments column -->
+              <!-- /.col -->
+              <div class="col-12">
+                <p class="lead"></p>
+
+                <div class="table-responsive">
+                  <table class="table">
+                    <tr>
+                      <th style="width:50%">Solicitante:</th>
+                      <td>{{ this.requisicion.owner.name }}  {{ this.requisicion.owner.last_name }}</td>
+                    </tr>
+                    <tr>
+                      <th style="width:50%">Título:</th>
+                      <td>{{ this.requisicion.title }}</td>
+                    </tr>
+                    <tr>
+                      <th>Descripción</th>
+                      <td>{{ this.requisicion.description }}</td>
+                    </tr>
+                    <tr>
+                      <th>Estado:</th>
+                      <td><span class="badge badge-warning">{{ this.requisicion.status }}</span></td>
+                    </tr>
+                    <tr>
+                      <th>Precio:</th>
+                      <td>₡ {{ this.requisicion.budget }}</td>
+                    </tr>
+                    
+                  </table>
+                </div>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+
+            <!-- this row will not appear when printing -->
+            <div class="row no-print">
+              <div class="col-12">
+                <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Imprimir</a>
+                <button type="button" class="btn btn-danger float-right"><i class="fas fa-times"></i> Rechazar
+                </button>
+                <button type="button" class="btn btn-success float-right" style="margin-right: 5px;">
+                  <i class="fas fa-check"></i> Aprobar
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- /.invoice -->
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </section>
+  <!-- /.content -->
 </div>
 <app-footer></app-footer>
