@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { RequisicionModel } from "../models/requesicion.model";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: "root"
@@ -9,13 +10,13 @@ export class ReqisicionesService {
   constructor(private http: HttpClient) {}
 
   obtenerRequisiones() {
-    return this.http.get("http://localhost:3000/api/v1/requisitions", {
+    return this.http.get(environment.API_PATH + "/requisitions", {
       withCredentials: true
     });
   }
 
   obtenerRequisicionPorID(id: string) {
-    return this.http.get("http://localhost:3000/api/v1/requisitions/" + id, {
+    return this.http.get(environment.API_PATH + "/requisitions/" + id, {
       withCredentials: true
     });
   }
@@ -23,7 +24,7 @@ export class ReqisicionesService {
   crearRequisicion(requisicion: any) {
     var numBudget = +requisicion.budget;
     return this.http.post(
-      "http://localhost:3000/api/v1/requisition",
+      environment.API_PATH + "/requisition",
       {
         title: requisicion.title,
         description: requisicion.description,
