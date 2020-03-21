@@ -25,7 +25,7 @@ app.use(
 app.use(express.json());
 
 // Static Files
-app.use(express.static(path.join(__dirname, "..", "public")));
+app.use(express.static(path.join(__dirname, "public")));
 
 // BodyParser
 app.use(express.urlencoded({ extended: false }));
@@ -58,7 +58,7 @@ app.use(process.env.API_BASE_PATH, require("./routes/requisition.route"));
 app.use("*", (req, res, next) => {
           if (!req.originalUrl.includes(process.env.API_BASE_PATH))
                   res.sendFile(
-                          path.join(__dirname, "..", "public", "index.html")
+                          path.join(__dirname, "public", "index.html")
                   );
           else next();
   });
