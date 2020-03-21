@@ -54,7 +54,7 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="auth.currentUser.type == 'admin'">
           <a
             [routerLink]="['/usuarios']"
             routerLinkActive="active"
@@ -66,8 +66,11 @@
             </p>
           </a>
         </li>
-        <li class="nav-item">
-          <a href="pages/widgets.html" class="nav-link">
+        <li class="nav-item" *ngIf="auth.currentUser.type !== 'BUYER'">
+          <a             
+          [routerLink]="['/reportes']"
+          routerLinkActive="active"
+          class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>
             <p>
               Reportes  <span class="right badge badge-danger">Próximamente!</span>

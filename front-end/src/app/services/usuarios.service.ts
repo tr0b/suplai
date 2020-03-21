@@ -52,4 +52,11 @@ export class UsuariosService {
       "http://localhost:3000/api/v1/userFilter?type=" + tipoUsuario
     );
   }
+
+  getCurrent() {
+    return this.http.get(
+      "http://localhost:3000/api/v1/current"
+    );
+  }
+
 }

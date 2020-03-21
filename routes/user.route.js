@@ -163,6 +163,11 @@ router.get("/logout", (req, res) => {
 	res.send("logout!");
 });
 
+//[GET] Logout User
+router.get("/current", (req, res) => {
+	res.json(req.user);
+});
+
 //[POST] Login User
 router.post("/login", function(req, res, next) {
 	passport.authenticate("local", function(err, user, info) {
