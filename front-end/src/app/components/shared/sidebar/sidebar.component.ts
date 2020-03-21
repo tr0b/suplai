@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ["./sidebar.component.css"]
 })
 export class SidebarComponent implements OnInit {
-  constructor(private loginService: LoginService, private router: Router, private auth:AuthService) {}
+  constructor(private loginService: LoginService, private router: Router, public auth:AuthService) {}
 
   ngOnInit() {}
 

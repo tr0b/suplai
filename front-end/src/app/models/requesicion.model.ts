@@ -5,5 +5,5 @@ export class RequisicionModel {
   title: string;
   description: string;
   budget: number;
-  owner: string;
+  owner: any;
 }
