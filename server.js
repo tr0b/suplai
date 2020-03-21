@@ -55,12 +55,12 @@ app.use(process.env.API_BASE_PATH, require("./routes/user.route"));
 app.use(process.env.API_BASE_PATH, require("./routes/requisition.route"));
 
 // Default Route
-/* app.use("*", (req, res, next) => {
- *         if (!req.originalUrl.includes(process.env.API_BASE_PATH))
- *                 res.sendFile(
- *                         path.join(__dirname, "..", "public", "index.html")
- *                 );
- *         else next();
- * }); */
+app.use("*", (req, res, next) => {
+          if (!req.originalUrl.includes(process.env.API_BASE_PATH))
+                  res.sendFile(
+                          path.join(__dirname, "..", "public", "index.html")
+                  );
+          else next();
+  });
 
 module.exports = app;
