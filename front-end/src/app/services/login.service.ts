@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { AuthService } from "./auth.service";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: "root"
@@ -10,7 +11,7 @@ export class LoginService {
 
   logIn(email: string, password: string) {
     return this.http.post(
-      "http://localhost:3000/api/v1/login",
+      environment.API_PATH + "/login",
       {
         email: email,
         password: password
@@ -24,7 +25,7 @@ export class LoginService {
 
   logOut() {
     this.auth.currentUser = null;
-    return this.http.get("http://localhost:3000/api/v1/logout", {
+    return this.http.get(environment.API_PATH + "/logout", {
       responseType: "text"
     });
   }
