@@ -1,63 +1,75 @@
-<!-- Content Header (Page header) -->
-<div class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Usuarios</h1>
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Usuarios</h1>
+        </div>
       </div>
+      <!-- /.row -->
     </div>
-    <!-- /.row -->
+    <!-- /.container-fluid -->
   </div>
-  <!-- /.container-fluid -->
-</div>
-<!-- /.content-header -->
+  <!-- /.content-header -->
 
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Usuarios</h3>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Usuarios</h3>
 
-            <div class="card-tools">
-              <div>
-                <button
-                  type="button"
-                  class="btn  btn-success"
-                  [routerLink]="['/agregarUsuario']"
-                >
-                  <i class="fas fa-plus"></i>
-                  Agregar
-                </button>
+              <div class="card-tools">
+                <div>
+                  <button
+                    type="button"
+                    class="btn  btn-success"
+                    [routerLink]="['/agregarUsuario']"
+                  >
+                    <i class="fas fa-user-plus"></i>
+                    Agregar
+                  </button>
+                </div>
               </div>
             </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+              <table class="table table-head-fixed text-nowrap">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Usuario</th>
+                    <th>Jefe</th>
+                    <th>Correo</th>
+                    <th>Tipo Usuario</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let usuario of this.usuarios"
+                    [routerLink]="['/usuario', usuario._id]"
+                  >
+                    <td>{{ usuario._id | slice: -5 }}</td>
+                    <td>{{ usuario.name + " " + usuario.last_name }}</td>
+                    <td>
+                      {{ usuario.boss.name + " " + usuario.boss.last_name }}
+                    </td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.type }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
           </div>
-          <!-- /.card-header -->
-          <div class="card-body table-responsive p-0" style="height: 300px;">
-            <table class="table table-head-fixed text-nowrap">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Usuario</th>
-                  <th>Correo</th>
-                  <th>Tipo Usuario</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let usuario of this.usuarios">
-                  <td>{{ usuario.ID }}</td>
-                  <td>{{ usuario.nombre + " " + usuario.apellidos }}</td>
-                  <td>{{ usuario.correo }}</td>
-                  <td>{{ usuario.tipoUsuario }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- /.card-body -->
+          <!-- /.card -->
         </div>
-        <!-- /.card -->
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+<app-footer></app-footer>

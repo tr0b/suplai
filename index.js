@@ -1,13 +1,15 @@
-const dotenv = require('dotenv')
-dotenv.config()
+//Libraries
+const dotenv = require("dotenv");
+dotenv.config();
 
 // Mongo DB Connection
-require('./database')
+require("./database");
 
 // Server
-const app = require('./server')
+const app = require("./server");
 
 // Start Server
-app.listen(app.get('port'), () => {
-    console.log(`Server on port: ${app.get('port')}`);
-})
+app.listen(app.get("port"), () => {
+	console.log(`Server on port: ${app.get("port")}`);
+});
+

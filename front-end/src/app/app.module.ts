@@ -16,6 +16,9 @@ import { RegistroComponent } from "./components/shared/registro/registro.compone
 import { ReportesComponent } from "./components/reportes/reportes.component";
 import { AgregarUsuarioComponent } from "./components/agregar-usuario/agregar-usuario.component";
 import { AgregarRequisicionComponent } from "./components/agregar-requisicion/agregar-requisicion.component";
+import { HttpClientModule } from "@angular/common/http";
+import { UsuarioComponent } from "./components/usuario/usuario.component";
+import { RequisicionComponent } from "./components/requisicion/requisicion.component";
 
 @NgModule({
   declarations: [
@@ -30,9 +33,18 @@ import { AgregarRequisicionComponent } from "./components/agregar-requisicion/ag
     RegistroComponent,
     ReportesComponent,
     AgregarUsuarioComponent,
-    AgregarRequisicionComponent
+    AgregarRequisicionComponent,
+    UsuarioComponent,
+    RequisicionComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

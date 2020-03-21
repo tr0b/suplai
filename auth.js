@@ -1,9 +1,9 @@
+// Pass this function to protect the GET URLs as a second param
 module.exports = {
-	ensureAuthenticated: function(req, res, next) {
-		if (req.isAuthenticated()) {
-			return next();
-		}
-		req.flash("error_msg", "Please log in to view this resource");
-		res.redirect("/users/login");
-	}
-};
+  ensureAuthenticated: (req,res,next) => {
+      if(req.isAuthenticated()){
+          return next();
+      }
+      res.send("No Authenticated")
+  }
+  }

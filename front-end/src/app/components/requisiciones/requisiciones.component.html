@@ -1,67 +1,91 @@
-<!-- Content Header (Page header) -->
-<div class="content-header">
-  <div class="container-fluid">
-    <div class="row mb-2">
-      <div class="col-sm-6">
-        <h1 class="m-0 text-dark">Requisiciones</h1>
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Requisiciones</h1>
+        </div>
       </div>
+      <!-- /.row -->
     </div>
-    <!-- /.row -->
+    <!-- /.container-fluid -->
   </div>
-  <!-- /.container-fluid -->
-</div>
-<!-- /.content-header -->
+  <!-- /.content-header -->
 
-<section class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        <div class="card">
-          <div class="card-header">
-            <h3 class="card-title">Requisiciones</h3>
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Requisiciones</h3>
 
-            <div class="card-tools">
-              <div>
-                <button
-                  type="button"
-                  class="btn btn-block btn-success"
-                  [routerLink]="['/agregarRequisicion']"
-                >
-                  <i class="fas fa-plus"></i>
-                  Agregar
-                </button>
+              <div class="card-tools">
+                <div>
+                  <button
+                    type="button"
+                    class="btn btn-block btn-success"
+                    [routerLink]="['/agregarRequisicion']"
+                  >
+                    <i class="fas fa-plus"></i>
+                    Agregar
+                  </button>
+                </div>
               </div>
             </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+              <table class="table table-head-fixed text-nowrap">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Encargado</th>
+                    <th>Jefe</th>
+                    <th>Titulo</th>
+                    <th>Descripcion</th>
+                    <th>Costo</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let requisicion of this.requisicionces"
+                    [routerLink]="['/requisicion', requisicion._id]"
+                  >
+                    <td>{{ requisicion._id | slice: -5 }}</td>
+                    <td>
+                      {{
+                        requisicion.owner.name +
+                          " " +
+                          requisicion.owner.last_name
+                      }}
+                    </td>
+                    <td>
+                      {{
+                        requisicion.owner.boss.name +
+                          " " +
+                          requisicion.owner.boss.last_name
+                      }}
+                    </td>
+                    <td>{{ requisicion.title }}</td>
+                    <td>{{ requisicion.description }}</td>
+                    <td>{{ requisicion.budget }}</td>
+                    <td>
+                      {{ requisicion.status }}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <!-- /.card-body -->
           </div>
-          <!-- /.card-header -->
-          <div class="card-body table-responsive p-0" style="height: 300px;">
-            <table class="table table-head-fixed text-nowrap">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Titulo</th>
-                  <th>Descripcion</th>
-                  <th>Costo</th>
-                  <th>Estado</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let requisicion of this.requisicionces">
-                  <td>{{ requisicion.ID }}</td>
-                  <td>{{ requisicion.titulo }}</td>
-                  <td>{{ requisicion.descripcion }}</td>
-                  <td>{{ requisicion.costo }}</td>
-                  <td>
-                    {{ requisicion.estadoSolicitud }}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- /.card-body -->
+          <!-- /.card -->
         </div>
-        <!-- /.card -->
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+<app-footer></app-footer>

@@ -1,47 +1,38 @@
 import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { RequisicionModel } from "../models/requesicion.model";
 
 @Injectable({
   providedIn: "root"
 })
 export class ReqisicionesService {
-  private requisiciones: any[] = [
-    {
-      ID: "1",
-      titulo: "Req 1",
-      descripcion: "req 1",
-      costo: 999,
-      estadoSolicitud: 1,
-      fecha: new Date()
-    },
-    {
-      ID: "1",
-      titulo: "Req 1",
-      descripcion: "req 1",
-      costo: 999,
-      estadoSolicitud: 1,
-      fecha: new Date()
-    },
-    {
-      ID: "1",
-      titulo: "Req 1",
-      descripcion: "req 1",
-      costo: 999,
-      estadoSolicitud: 1,
-      fecha: new Date()
-    },
-    {
-      ID: "1",
-      titulo: "Req 1",
-      descripcion: "req 1",
-      costo: 999,
-      estadoSolicitud: 1,
-      fecha: new Date()
-    }
-  ];
-
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   obtenerRequisiones() {
-    return this.requisiciones;
+    return this.http.get("http://localhost:3000/api/v1/requisitions", {
+      withCredentials: true
+    });
+  }
+
+  obtenerRequisicionPorID(id: string) {
+    return this.http.get("http://localhost:3000/api/v1/requisitions/" + id, {
+      withCredentials: true
+    });
+  }
+
+  crearRequisicion(requisicion: any) {
+    var numBudget = +requisicion.budget;
+    return this.http.post(
+      "http://localhost:3000/api/v1/requisition",
+      {
+        title: requisicion.title,
+        description: requisicion.description,
+        budget: numBudget
+      },
+      {
+        withCredentials: true,
+        headers: new HttpHeaders().append("Content-Type", "application/json")
+      }
+    );
   }
 }

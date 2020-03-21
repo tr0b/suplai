@@ -1,0 +1,156 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark">Perfil</h1>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
+
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <!-- Profile Image -->
+          <div class="card card-primary card-outline">
+            <div class="card-body box-profile">
+              <div class="text-center">
+                <img
+                  class="profile-user-img img-fluid img-circle"
+                  src="../../dist/img/user4-128x128.jpg"
+                  alt="User profile picture"
+                />
+              </div>
+
+              <h3 class="profile-username text-center">
+                {{ usuario.name + " " + usuario.last_name }}
+              </h3>
+
+              <p class="text-muted text-center">{{ usuario.type }}</p>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+          <div class="card">
+            <div class="card-header p-2">
+              <h3 class="card-title">Información</h3>
+
+              <div class="card-tools">
+                <div>
+                  <button
+                    type="button"
+                    class="btn  btn-primary"
+                    (click)="editarUsuario()"
+                    *ngIf="!this.editar"
+                  >
+                    <i class="nav-icon fas fa-user-edit"></i>
+                    Editar
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <form
+                [formGroup]="forma"
+                (ngSubmit)="guardarCambios()"
+                novalidate="novalidate"
+              >
+                <fieldset [disabled]="!this.editar">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Nombre:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="nombre"
+                      placeholder="Nombre"
+                      formControlName="nombre"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Apellidos:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Apellidos"
+                      formControlName="apellidos"
+                      name="apellidos"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1"
+                      >Correo Electrónico:</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="Correo Electrónico"
+                      formControlName="correo"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Contraseña:</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="exampleFormControlInput1"
+                      placeholder="contrasena"
+                      formControlName="contrasena"
+                      name="contrasena"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Estado:</label>
+                    <select
+                      class="form-control"
+                      id="exampleFormControlSelect1"
+                      formControlName="tipoEstado"
+                    >
+                      <option value="1">Activo</option>
+                      <option value="0">Inactivo</option>
+                    </select>
+                  </div>
+                </fieldset>
+              </form>
+              <div class="btn__box" *ngIf="this.editar">
+                <button
+                  type="submit"
+                  class="btn  btn-success"
+                  (click)="guardarCambios()"
+                >
+                  <i class="nav-icon fas fa-user-edit"></i>
+                  Editar
+                </button>
+                <button
+                  type="button"
+                  class="btn  btn-danger"
+                  (click)="editarUsuario()"
+                >
+                  <i class="nav-icon fas fa-window-close"></i>
+                  Cancelar
+                </button>
+              </div>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.nav-tabs-custom -->
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>
+  </section>
+</div>
+<app-footer></app-footer>
